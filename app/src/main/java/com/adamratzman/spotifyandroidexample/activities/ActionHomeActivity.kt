@@ -65,7 +65,7 @@ fun ActionHomeViewPage(activity: BaseActivity? = null) {
             Spacer(modifier = Modifier.preferredHeight(16.dp))
 
             Button(onClick = {
-                activity?.model?.preferences?.spotifyAccessToken = activity?.model?.preferences?.spotifyAccessToken?.copy(accessToken = "f")
+                activity?.model?.credentialStore?.spotifyAccessToken = "this-is-invalid"
                activity?.let { toast(it, message = "Invalidated spotify token... next call should refresh api") }
             }) {
                 Text("Invalidate token")

@@ -3,6 +3,7 @@ package com.adamratzman.spotifyandroidexample.activities
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,13 +16,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.AmbientContext
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
+import com.adamratzman.spotify.auth.guardValidSpotifyApi
 import com.adamratzman.spotify.models.Track
 import com.adamratzman.spotifyandroidexample.toast
 import dev.chrisbanes.accompanist.glide.GlideImage
@@ -33,9 +35,17 @@ class TrackViewActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val tracks = guardValidSpotifyApi(TrackViewActivity::class.java) {
+            val tracks = guardValidSpotifyApi(
+                spotifyLoginImplementationClass = SpotifyLoginActivity::class.java,
+                classBackTo = TrackViewActivity::class.java
+            ) {
                 runBlocking {
-                    model.spotifyApi?.search?.searchTrack("Avicii")?.items ?: listOf()
+                    Log.i(
+                        "spotify-app token",
+                        model.credentialStore.getSpotifyImplicitGrantApi()?.token.toString()
+                    )
+                    model.credentialStore.getSpotifyImplicitGrantApi()?.search?.searchTrack("Avicii")?.items
+                        ?: listOf()
                 }
             }
 
@@ -63,7 +73,7 @@ fun TrackViewPage(activity: BaseActivity? = null, tracks: List<Track>) {
 
             Button(onClick = {
                 if (activity == null) return@Button
-                if (activity.model.preferences.clear()) {
+                if (activity.model.credentialStore.clear()) {
                     activity.startActivity(Intent(activity, MainActivity::class.java))
                     activity.finish()
                 } else {
@@ -87,7 +97,7 @@ fun TrackViewPagePreview() {
 
 @Composable
 private fun TrackList(tracks: List<Track>) {
-    val context = AmbientContext.current
+    val context = LocalContext.current
     LazyColumn {
         items(
             items = tracks, itemContent = { track ->
