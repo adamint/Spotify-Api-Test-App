@@ -3,7 +3,7 @@ package com.adamratzman.spotifyandroidexample.activities
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,7 +26,6 @@ import com.adamratzman.spotify.models.Track
 import com.adamratzman.spotifyandroidexample.auth.guardValidSpotifyApi
 import com.adamratzman.spotifyandroidexample.utils.toast
 import dev.chrisbanes.accompanist.glide.GlideImage
-
 
 class TrackViewActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

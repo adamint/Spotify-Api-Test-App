@@ -1,17 +1,15 @@
 package com.adamratzman.spotifyandroidexample.auth
 
 import android.app.Activity
-import android.util.Log
 import com.adamratzman.spotify.SpotifyClientApi
 import com.adamratzman.spotify.SpotifyException
 import com.adamratzman.spotify.auth.SpotifyDefaultCredentialStore
 import com.adamratzman.spotify.auth.implicit.startSpotifyImplicitLoginActivity
 import com.adamratzman.spotify.auth.pkce.startSpotifyClientPkceLoginActivity
 import com.adamratzman.spotifyandroidexample.data.Model
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
-public fun <T> Activity.guardValidSpotifyApi(
+fun <T> Activity.guardValidSpotifyApi(
     classBackTo: Class<out Activity>,
     alreadyTriedToReauthenticate: Boolean = false,
     block: suspend (api: SpotifyClientApi) -> T
@@ -33,7 +31,7 @@ public fun <T> Activity.guardValidSpotifyApi(
                 val api = Model.credentialStore.getSpotifyClientPkceApi()!!
                 if (!alreadyTriedToReauthenticate) {
                     try {
-                       api.refreshToken()
+                        api.refreshToken()
                         Model.credentialStore.spotifyToken = api.token
                         block(api)
                     } catch (e: SpotifyException.ReAuthenticationNeededException) {

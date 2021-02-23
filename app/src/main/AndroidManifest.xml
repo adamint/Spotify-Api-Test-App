@@ -52,7 +52,6 @@
 
         <activity android:name=".activities.TrackViewActivity" />
         <activity android:name=".activities.ActionHomeActivity" />
-
+        <activity android:name=".activities.ViewBroadcastsActivity" />
     </application>
-
 </manifest>

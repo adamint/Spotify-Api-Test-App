@@ -2,6 +2,7 @@ package com.adamratzman.spotifyandroidexample.activities
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -11,7 +12,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -67,6 +67,14 @@ fun ActionHomeViewPage(activity: BaseActivity? = null) {
                 }
             }) {
                 Text("Invalidate token")
+            }
+
+            Spacer(modifier = Modifier.preferredHeight(16.dp))
+
+            Button(onClick = {
+                activity?.startActivity(Intent(activity, ViewBroadcastsActivity::class.java))
+            }) {
+                Text("View Spotify app broadcasts")
             }
 
             Spacer(modifier = Modifier.preferredHeight(16.dp))

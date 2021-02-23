@@ -16,14 +16,14 @@ class SpotifyImplicitLoginActivityImpl : AbstractSpotifyAppImplicitLoginActivity
     override val useDefaultRedirectHandler: Boolean = false
     override fun getRequestingScopes(): List<SpotifyScope> = SpotifyScope.values().toList()
 
-    override fun onSuccessfulAuthentication(spotifyApi: SpotifyImplicitGrantApi) {
+    override fun onSuccess(spotifyApi: SpotifyImplicitGrantApi) {
         val model = (application as SpotifyPlaygroundApplication).model
         model.credentialStore.setSpotifyApi(spotifyApi)
         toast("Authentication via spotify-auth has completed. Launching TrackViewActivity..")
         startActivity(Intent(this, ActionHomeActivity::class.java))
     }
 
-    override fun onAuthenticationFailed(errorMessage: String) {
+    override fun onFailure(errorMessage: String) {
         toast("Auth failed: $errorMessage")
     }
 }

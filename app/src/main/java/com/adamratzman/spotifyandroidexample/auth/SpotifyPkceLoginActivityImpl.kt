@@ -2,7 +2,6 @@ package com.adamratzman.spotifyandroidexample.auth
 
 import android.app.Activity
 import android.content.Intent
-import android.util.Log
 import com.adamratzman.spotify.SpotifyClientApi
 import com.adamratzman.spotify.SpotifyScope
 import com.adamratzman.spotify.auth.pkce.AbstractSpotifyPkceLoginActivity
