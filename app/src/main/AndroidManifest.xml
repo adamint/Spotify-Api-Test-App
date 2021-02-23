@@ -19,21 +19,40 @@
         </activity>
 
         <activity
-            android:name=".activities.SpotifyLoginActivity"
+            android:name=".auth.SpotifyImplicitLoginActivityImpl"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="spotifyandroidplayground" android:host="spotify" />
+                <data android:scheme="spotifyandroidplayground" android:host="spotify-auth" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.spotify.sdk.android.auth.LoginActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+
+            <intent-filter>
+                <data android:scheme="spotifyandroidplayground" android:host="spotify-auth" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".auth.SpotifyPkceLoginActivityImpl"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="spotifyandroidplayground" android:host="spotify-pkce" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".activities.TrackViewActivity" />
         <activity android:name=".activities.ActionHomeActivity" />
+
     </application>
 
 </manifest>

@@ -10,7 +10,7 @@ class SpotifyPlaygroundApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        model = Model()
+        model = Model
         context = applicationContext
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
     }

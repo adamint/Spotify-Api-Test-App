@@ -4,11 +4,12 @@ import com.adamratzman.spotify.auth.SpotifyDefaultCredentialStore
 import com.adamratzman.spotifyandroidexample.BuildConfig
 import com.adamratzman.spotifyandroidexample.SpotifyPlaygroundApplication
 
-class Model {
+object Model {
     val credentialStore by lazy {
         SpotifyDefaultCredentialStore(
-            BuildConfig.SPOTIFY_CLIENT_ID,
-            SpotifyPlaygroundApplication.context
+            clientId = BuildConfig.SPOTIFY_CLIENT_ID,
+            redirectUri = BuildConfig.SPOTIFY_REDIRECT_URI_PKCE,
+            applicationContext = SpotifyPlaygroundApplication.context
         )
     }
 }

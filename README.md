@@ -10,7 +10,7 @@ Because I won't provide the internet with my Spotify Client ID and Client Secret
 1. Create Spotify Developer account at the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/applications)
 2. Create app in the Spotify Developer dashboard
 3. Copy Client ID and Client Secret to the build.gradle in the app folder (replace the text "REPLACE_THIS" with the corresponding value)
-4. Add redirect uri "spotifyplayground://spotify" to your app at the Spotify developer website (edit settings > redirect uri)
+4. Add redirect uri "spotifyandroidplayground://spotify" to your app at the Spotify developer website (edit settings > redirect uri)
 5. Add package name "dev.nielsg.spotifyplayground" to your app at the Spotify developer website. Make sure to also add your keystore hash, which can be retrieved from either your keystore, or generated from your computer's keystore (Windows: keytool -list -v -keystore c:\users\YOUR_USER_NAME\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android)
 6. Spotify should now work in your app :)
 

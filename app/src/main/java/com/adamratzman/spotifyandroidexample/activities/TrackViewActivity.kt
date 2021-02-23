@@ -23,11 +23,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
-import com.adamratzman.spotify.auth.guardValidSpotifyApi
 import com.adamratzman.spotify.models.Track
-import com.adamratzman.spotifyandroidexample.toast
+import com.adamratzman.spotifyandroidexample.auth.guardValidSpotifyApi
+import com.adamratzman.spotifyandroidexample.utils.toast
 import dev.chrisbanes.accompanist.glide.GlideImage
-import kotlinx.coroutines.runBlocking
 
 
 class TrackViewActivity : BaseActivity() {
@@ -35,23 +34,11 @@ class TrackViewActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val tracks = guardValidSpotifyApi(
-                spotifyLoginImplementationClass = SpotifyLoginActivity::class.java,
-                classBackTo = TrackViewActivity::class.java
-            ) {
-                runBlocking {
-                    Log.i(
-                        "spotify-app token",
-                        model.credentialStore.getSpotifyImplicitGrantApi()?.token.toString()
-                    )
-                    model.credentialStore.getSpotifyImplicitGrantApi()?.search?.searchTrack("Avicii")?.items
-                        ?: listOf()
-                }
+            val tracks = guardValidSpotifyApi(classBackTo = ActionHomeActivity::class.java) { api ->
+                api.search.searchTrack("Avicii").items
             }
 
-            if (tracks != null) {
-                TrackViewPage(this, tracks)
-            }
+            if (tracks != null) TrackViewPage(this, tracks)
         }
     }
 }
