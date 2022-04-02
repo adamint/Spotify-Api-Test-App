@@ -25,7 +25,7 @@ import androidx.core.content.ContextCompat.startActivity
 import com.adamratzman.spotify.models.Track
 import com.adamratzman.spotifyandroidexample.auth.guardValidSpotifyApi
 import com.adamratzman.spotifyandroidexample.utils.toast
-import dev.chrisbanes.accompanist.glide.GlideImage
+import com.skydoves.landscapist.glide.GlideImage
 
 class TrackViewActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,11 +109,12 @@ private fun TrackRow(track: Track, onTrackClick: (Track) -> Unit) {
             .padding(8.dp)
     ) {
         val imageModifier = Modifier
-            .preferredSize(46.dp)
+            .height(46.dp)
+            .width(46.dp)
             .clip(shape = CircleShape)
 
         GlideImage(
-            data = track.album.images.firstOrNull()?.url ?: "https://picsum.photos/300/300",
+            imageModel = track.album.images.firstOrNull()?.url ?: "https://picsum.photos/300/300",
             contentDescription = null,
             modifier = imageModifier
         )

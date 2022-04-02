@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Spotifywebapiandroidexample"
         android:name=".SpotifyPlaygroundApplication">
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,7 @@
 
         <activity
             android:name=".auth.SpotifyImplicitLoginActivityImpl"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -31,7 +31,7 @@
 
         <activity
             android:name="com.spotify.sdk.android.auth.LoginActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" android:exported="false">
 
             <intent-filter>
                 <data android:scheme="spotifyandroidplayground" android:host="spotify-auth" />
@@ -39,7 +39,7 @@
         </activity>
 
         <activity android:name=".auth.SpotifyPkceLoginActivityImpl"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

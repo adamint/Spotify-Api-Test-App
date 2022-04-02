@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -55,7 +55,7 @@ fun ActionHomeViewPage(activity: BaseActivity? = null) {
                 Text("See a track search/display example")
             }
 
-            Spacer(modifier = Modifier.preferredHeight(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Button(onClick = {
                 activity?.model?.credentialStore?.spotifyAccessToken = "invalid"
@@ -69,7 +69,7 @@ fun ActionHomeViewPage(activity: BaseActivity? = null) {
                 Text("Invalidate token")
             }
 
-            Spacer(modifier = Modifier.preferredHeight(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Button(onClick = {
                 activity?.startActivity(Intent(activity, ViewBroadcastsActivity::class.java))
@@ -77,7 +77,7 @@ fun ActionHomeViewPage(activity: BaseActivity? = null) {
                 Text("View Spotify app broadcasts")
             }
 
-            Spacer(modifier = Modifier.preferredHeight(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Button(onClick = {
                 activity?.startActivity(Intent(activity, MainActivity::class.java))

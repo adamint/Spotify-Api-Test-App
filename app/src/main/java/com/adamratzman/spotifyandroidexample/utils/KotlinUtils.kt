@@ -37,14 +37,3 @@ fun safeLoadImage(action: () -> Unit) {
         // Possible error: You cannot start a load for a destroyed activity
     }
 }
-
-fun launchIOTask(action: suspend () -> Unit) {
-    GlobalScope.launch(Dispatchers.IO) {
-        try {
-            action.invoke()
-        } catch (e: Exception) {
-            // Catch unforeseen crashes
-            e.printStackTrace()
-        }
-    }
-}

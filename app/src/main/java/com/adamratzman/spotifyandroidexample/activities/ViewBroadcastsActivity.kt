@@ -7,14 +7,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -50,13 +48,10 @@ fun ViewBroadcastsPage(broadcasts: List<SpotifyBroadcastEventData>) {
             modifier = Modifier.padding(16.dp)
         ) {
             Text(
-                "Most recent 3 broadcasts",
-                style = typography.h4,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
+                "Most recent 3 broadcasts", style = typography.h4, maxLines = 2, overflow = TextOverflow.Ellipsis
             )
 
-            Spacer(modifier = Modifier.preferredHeight(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             if (broadcasts.isNotEmpty()) {
                 BroadcastList(broadcasts = broadcasts)
@@ -67,10 +62,7 @@ fun ViewBroadcastsPage(broadcasts: List<SpotifyBroadcastEventData>) {
                     overflow = TextOverflow.Ellipsis
                 )
             } else Text(
-                "There are no broadcasts!",
-                style = typography.body1,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
+                "There are no broadcasts!", style = typography.body1, maxLines = 2, overflow = TextOverflow.Ellipsis
             )
         }
     }
@@ -80,45 +72,32 @@ fun ViewBroadcastsPage(broadcasts: List<SpotifyBroadcastEventData>) {
 private fun BroadcastList(broadcasts: List<SpotifyBroadcastEventData>) {
     val context = LocalContext.current
     LazyColumn {
-        items(
-            items = broadcasts.takeLast(3).reversed(), itemContent = { broadcast ->
-                BroadcastRow(broadcastEventData = broadcast, onClick = {
-                    toast(context, "You clicked $broadcast")
-                })
-                Divider()
+        items(items = broadcasts.takeLast(3).reversed(), itemContent = { broadcast ->
+            BroadcastRow(broadcastEventData = broadcast, onClick = {
+                toast(context, "You clicked $broadcast")
             })
+            Divider()
+        })
     }
 }
 
 @Composable
 private fun BroadcastRow(
-    broadcastEventData: SpotifyBroadcastEventData,
-    onClick: (SpotifyBroadcastEventData) -> Unit
+    broadcastEventData: SpotifyBroadcastEventData, onClick: (SpotifyBroadcastEventData) -> Unit
 ) {
     Row(
-        modifier = Modifier
-            .clickable(onClick = { onClick(broadcastEventData) })
-            .fillMaxWidth()
-            .padding(8.dp)
+        modifier = Modifier.clickable(onClick = { onClick(broadcastEventData) }).fillMaxWidth().padding(8.dp)
     ) {
-        val imageModifier = Modifier
-            .preferredSize(46.dp)
-            .clip(shape = CircleShape)
-
         Column(modifier = Modifier.padding(start = 8.dp)) {
             Text(
-                text = broadcastEventData.type.id,
-                fontWeight = FontWeight.Bold,
-                style = MaterialTheme.typography.h6
+                text = broadcastEventData.type.id, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.h6
             )
             when (broadcastEventData) {
                 is SpotifyQueueChangedData -> {
                     Text(
                         text = "Time sent: ${
-                            DateFormat.getDateFormat(LocalContext.current)
-                                .format(Date(broadcastEventData.timeSentInMs))
-                        }",
-                        style = MaterialTheme.typography.body2
+                            DateFormat.getDateFormat(LocalContext.current).format(Date(broadcastEventData.timeSentInMs))
+                        }", style = MaterialTheme.typography.body2
                     )
                 }
                 is SpotifyMetadataChangedData -> {
@@ -132,8 +111,7 @@ private fun BroadcastRow(
                             .format(Date(broadcastEventData.timeSentInMs))
                     ).forEach { (title, data) ->
                         Text(
-                            text = "$title: $data",
-                            style = MaterialTheme.typography.caption
+                            text = "$title: $data", style = MaterialTheme.typography.caption
                         )
                     }
                 }
@@ -145,8 +123,7 @@ private fun BroadcastRow(
                             .format(Date(broadcastEventData.timeSentInMs))
                     ).forEach { (title, data) ->
                         Text(
-                            text = "$title: $data",
-                            style = MaterialTheme.typography.caption
+                            text = "$title: $data", style = MaterialTheme.typography.caption
                         )
                     }
                 }

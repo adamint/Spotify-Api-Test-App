@@ -5,11 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -24,7 +23,6 @@ import com.adamratzman.spotifyandroidexample.auth.SpotifyImplicitLoginActivityIm
 import com.adamratzman.spotifyandroidexample.auth.SpotifyPkceLoginActivityImpl
 
 class MainActivity : AppCompatActivity() {
-    @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,7 +32,6 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-@ExperimentalAnimationApi
 @Composable
 fun AuthPage(activity: Activity? = null) {
     MaterialTheme {
@@ -82,7 +79,7 @@ fun AuthPage(activity: Activity? = null) {
                 style = typography.body2
             )
 
-            Spacer(modifier = Modifier.preferredHeight(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Text("spotify-web-api-kotlin by Adam Ratzman", style = typography.body2)
         }
@@ -90,7 +87,6 @@ fun AuthPage(activity: Activity? = null) {
 
 }
 
-@ExperimentalAnimationApi
 @Preview
 @Composable
 fun AuthPagePreview() {
