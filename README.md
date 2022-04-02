@@ -8,10 +8,7 @@ anonymous login using the client credentials flow.
 ### What does it do?
 It showcases logging in/logging out with PKCE and implicit authorization, as well as using the api to search tracks and integrate with the on-device Spotify application.
 
-<img width="100" alt="image" src="https://user-images.githubusercontent.com/20359921/161375063-5d2c0216-caaf-4fa5-b2dd-70871a2a1e48.png">
-<img width="100" alt="image" src="https://user-images.githubusercontent.com/20359921/161375069-f793ff74-b272-46ed-9ad3-bb8c1bdd19ea.png">
-<img width="100" alt="image" src="https://user-images.githubusercontent.com/20359921/161375077-5d884d81-0e28-4fbe-a043-759199273cdb.png">
-<img width="100" alt="image" src="https://user-images.githubusercontent.com/20359921/161375081-694e9731-ea32-4a33-ad44-67ba2a45a634.png">
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/20359921/161375063-5d2c0216-caaf-4fa5-b2dd-70871a2a1e48.png"> <img width="300" alt="image" src="https://user-images.githubusercontent.com/20359921/161375069-f793ff74-b272-46ed-9ad3-bb8c1bdd19ea.png"> <img width="300" alt="image" src="https://user-images.githubusercontent.com/20359921/161375077-5d884d81-0e28-4fbe-a043-759199273cdb.png"> <img width="300" alt="image" src="https://user-images.githubusercontent.com/20359921/161375081-694e9731-ea32-4a33-ad44-67ba2a45a634.png">
 
 
 ## Setup
